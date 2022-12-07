@@ -1,7 +1,10 @@
 import readline from 'node:readline';
 import { fileURLToPath } from 'node:url';
 
-const username = process.argv.slice(2)[0].split('=')[1] || 'anonymous';
+const isArgs = process.argv.slice(2).length > 0;
+
+const username = isArgs? process.argv.slice(2)[0].split('=')[1] : 'anonymous';
+
 const __dirname=fileURLToPath(import.meta.url)
 
 const snowCurrentDir= () => process.stdout.write(`\nYou are currently in ${__dirname}\nenter the command:`)
