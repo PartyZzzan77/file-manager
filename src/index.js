@@ -5,6 +5,7 @@ import {
   enterAnotherCommand,
   goUp,
   printCat,
+  printCPUS,
   printEOL,
   printHash,
   snowCurrentDir,
@@ -52,6 +53,9 @@ rl.on('line', (answer) => {
   if (answer === 'os --EOL') {
     printEOL();
   }
+  if (answer === 'os --cpus') {
+    printCPUS();
+  }
 
   snowCurrentDir(process.cwd());
 });
@@ -61,6 +65,8 @@ rl.on('SIGINT', (answer) => {
 });
 
 rl.on('close', () => {
+  console.clear();
+
   process.stdout.write(
     `\nThank you for using File Manager, ${username}, goodbye!` + '\n'
   );
