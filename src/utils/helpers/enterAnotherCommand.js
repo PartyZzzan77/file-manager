@@ -1,3 +1,3 @@
 export const enterAnotherCommand = () => {
-  process.stdout.write('\ntype another command')
+  process.stdout.write('\ntype another command\n')
 };

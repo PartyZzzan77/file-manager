@@ -1,6 +1,11 @@
 import readline from 'node:readline';
-import { fileURLToPath } from 'node:url';
-import { goUp, printCat, snowCurrentDir } from './utils/index.js';
+import { fileURLToPath} from 'node:url';
+import {
+  changeCatalog,
+  goUp,
+  printCat,
+  snowCurrentDir,
+} from './utils/index.js';
 import { dirname } from 'node:path';
 
 const __dirname = dirname(import.meta.url);
@@ -20,8 +25,16 @@ rl.on('line', (answer) => {
     goUp();
   }
 
+  if (answer.includes('cd')) {
+    changeCatalog(answer);
+  }
+
   if (answer === 'ls') {
     printCat(process.cwd());
+  }
+
+  if (answer === 'clear') {
+    console.clear();
   }
 
   if (answer === '.exit') {
