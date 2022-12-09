@@ -8,3 +8,4 @@ export { printEOL } from './helpers/OS/printEOL.js';
 export { printCPUS } from './helpers/OS/printCPUS.js';
 export { printHomedir } from './helpers/OS/printHomedir.js';
 export { printRootName } from './helpers/OS/printRootName.js';
+export { printArch } from './helpers/OS/printArch.js';

@@ -4,6 +4,7 @@ import {
   changeCatalog,
   enterAnotherCommand,
   goUp,
+  printArch,
   printCat,
   printCPUS,
   printEOL,
@@ -66,6 +67,10 @@ rl.on('line', (answer) => {
 
   if (answer === 'os --username') {
     printRootName();
+  }
+
+  if (answer === 'os --architecture') {
+    printArch();
   }
 
   snowCurrentDir(process.cwd());
