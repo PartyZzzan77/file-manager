@@ -1,9 +1,11 @@
 import readline from 'node:readline';
-import { fileURLToPath} from 'node:url';
+import { fileURLToPath } from 'node:url';
 import {
   changeCatalog,
+  enterAnotherCommand,
   goUp,
   printCat,
+  printHash,
   snowCurrentDir,
 } from './utils/index.js';
 import { dirname } from 'node:path';
@@ -31,6 +33,10 @@ rl.on('line', (answer) => {
 
   if (answer === 'ls') {
     printCat(process.cwd());
+  }
+
+  if (answer.includes('hash')) {
+    printHash(answer);
   }
 
   if (answer === 'clear') {
