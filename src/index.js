@@ -9,6 +9,7 @@ import {
   printEOL,
   printHash,
   printHomedir,
+  printRootName,
   snowCurrentDir,
 } from './utils/index.js';
 import { dirname } from 'node:path';
@@ -61,6 +62,10 @@ rl.on('line', (answer) => {
 
   if (answer === 'os --homedir') {
     printHomedir();
+  }
+
+  if (answer === 'os --username') {
+    printRootName();
   }
 
   snowCurrentDir(process.cwd());

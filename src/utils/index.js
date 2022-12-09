@@ -7,3 +7,4 @@ export { printHash } from './helpers/printHash.js';
 export { printEOL } from './helpers/OS/printEOL.js';
 export { printCPUS } from './helpers/OS/printCPUS.js';
 export { printHomedir } from './helpers/OS/printHomedir.js';
+export { printRootName } from './helpers/OS/printRootName.js';
