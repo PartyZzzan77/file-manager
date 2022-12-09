@@ -1,8 +1,8 @@
 import readline from 'node:readline';
-import { fileURLToPath } from 'node:url';
 import {
   changeCatalog,
-  enterAnotherCommand,
+  compress,
+  decompress,
   goUp,
   printArch,
   printCat,
@@ -13,21 +13,24 @@ import {
   printRootName,
   snowCurrentDir,
 } from './utils/index.js';
-import { dirname } from 'node:path';
-
-const __dirname = dirname(import.meta.url);
-const __filename = fileURLToPath(import.meta.url);
 
 const isArgs = process.argv.slice(2).length > 0;
 
 const username = isArgs ? process.argv.slice(2)[0].split('=')[1] : 'anonymous';
 
-const rl = readline.createInterface(process.stdin, process.stdout);
+const rl = readline.createInterface({
+  input: process.stdin,
+  output: process.stdout,
+  prompt: 'enter the command: ',
+});
 
 process.stdout.write(`Welcome to the File Manager, ${username}!\n\n`);
 
 snowCurrentDir(process.cwd());
 rl.on('line', (answer) => {
+  //navigation
+
+  console.log(answer.split(' ')[0]);
   if (answer === 'up') {
     goUp();
   }
@@ -39,11 +42,20 @@ rl.on('line', (answer) => {
   if (answer === 'ls') {
     printCat(process.cwd());
   }
-
+  //FS
   if (answer.includes('hash')) {
     printHash(answer);
   }
+  //compress/decompress
+  if (answer.split(' ')[0] === 'decompress') {
+    decompress(answer);
+  }
 
+  if (answer.split(' ')[0] === 'compress') {
+    compress(answer);
+  }
+
+  //exit/clear
   if (answer === 'clear') {
     console.clear();
   }
@@ -52,6 +64,7 @@ rl.on('line', (answer) => {
     console.clear();
     return rl.close();
   }
+  //OS
 
   if (answer === 'os --EOL') {
     printEOL();

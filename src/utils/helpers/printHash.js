@@ -3,19 +3,22 @@ import path from 'node:path';
 import { createHash } from 'node:crypto';
 import { snowCurrentDir } from './snowCurrentDir.js';
 import { enterAnotherCommand } from './enterAnotherCommand.js';
+import { printInvalidPath } from './printInvalidPath.js';
 
 export const printHash = (answer) => {
   const command = answer.split(' ');
 
-  if (command.length > 2) {
+  if (command.length !== 2) {
+    printInvalidPath();
     enterAnotherCommand();
+    return;
   }
 
   const pathSrc = path.resolve(process.cwd(), command[1]);
 
   fs.readFile(pathSrc, (err, data) => {
     if (err) {
-      process.stdout.write(`\ninvalid path\n`);
+      printInvalidPath();
       enterAnotherCommand();
       snowCurrentDir(process.cwd());
     } else {
