@@ -5,6 +5,7 @@ import {
   enterAnotherCommand,
   goUp,
   printCat,
+  printEOL,
   printHash,
   snowCurrentDir,
 } from './utils/index.js';
@@ -46,6 +47,10 @@ rl.on('line', (answer) => {
   if (answer === '.exit') {
     console.clear();
     return rl.close();
+  }
+
+  if (answer === 'os --EOL') {
+    printEOL();
   }
 
   snowCurrentDir(process.cwd());
