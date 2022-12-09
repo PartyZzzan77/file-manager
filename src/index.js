@@ -8,6 +8,7 @@ import {
   printCPUS,
   printEOL,
   printHash,
+  printHomedir,
   snowCurrentDir,
 } from './utils/index.js';
 import { dirname } from 'node:path';
@@ -53,8 +54,13 @@ rl.on('line', (answer) => {
   if (answer === 'os --EOL') {
     printEOL();
   }
+
   if (answer === 'os --cpus') {
     printCPUS();
+  }
+
+  if (answer === 'os --homedir') {
+    printHomedir();
   }
 
   snowCurrentDir(process.cwd());

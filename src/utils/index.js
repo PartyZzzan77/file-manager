@@ -6,3 +6,4 @@ export { changeCatalog } from './helpers/changeCatalog.js';
 export { printHash } from './helpers/printHash.js';
 export { printEOL } from './helpers/OS/printEOL.js';
 export { printCPUS } from './helpers/OS/printCPUS.js';
+export { printHomedir } from './helpers/OS/printHomedir.js';
