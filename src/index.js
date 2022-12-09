@@ -1,6 +1,6 @@
 import readline from 'node:readline';
 import { fileURLToPath } from 'node:url';
-import { printCat, snowCurrentDir } from './utils/index.js';
+import { goUp, printCat, snowCurrentDir } from './utils/index.js';
 import { dirname } from 'node:path';
 
 const __dirname = dirname(import.meta.url);
@@ -14,18 +14,22 @@ const rl = readline.createInterface(process.stdin, process.stdout);
 
 process.stdout.write(`Welcome to the File Manager, ${username}!\n\n`);
 
-snowCurrentDir();
-
+snowCurrentDir(process.cwd());
 rl.on('line', (answer) => {
-  if (answer === '.exit') {
-    return rl.close();
+  if (answer === 'up') {
+    goUp();
   }
 
   if (answer === 'ls') {
-    printCat(__dirname);
+    printCat(process.cwd());
   }
 
-  snowCurrentDir();
+  if (answer === '.exit') {
+    console.clear();
+    return rl.close();
+  }
+
+  snowCurrentDir(process.cwd());
 });
 
 rl.on('SIGINT', (answer) => {

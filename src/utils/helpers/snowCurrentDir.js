@@ -1,8 +1,4 @@
-import { dirname } from 'node:path';
-
-const __dirname = dirname(import.meta.url);
-
-export const snowCurrentDir = () =>
+export const snowCurrentDir = (path) =>
   process.stdout.write(
-    `\nYou are currently in ${__dirname}\nenter the command: `
+    `\nYou are currently in ${path}\nenter the command: `
   );
