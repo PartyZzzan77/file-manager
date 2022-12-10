@@ -12,6 +12,7 @@ import {
   printHash,
   printHomedir,
   printRootName,
+  renameFile,
   snowCurrentDir,
 } from './utils/index.js';
 
@@ -48,6 +49,10 @@ rl.on('line', (answer) => {
   if (commandLine === 'add') {
     addEmptyFile(answer);
   }
+  if (commandLine === 'rn') {
+    renameFile(answer);
+  }
+
   if (commandLine === 'hash') {
     printHash(answer);
   }
