@@ -13,6 +13,7 @@ import {
   printHash,
   printHomedir,
   printRootName,
+  readFile,
   renameFile,
   snowCurrentDir,
 } from './utils/index.js';
@@ -57,8 +58,12 @@ rl.on('line', (answer) => {
   if (commandLine === 'hash') {
     printHash(answer);
   }
+
   if (commandLine === 'rm') {
     deleteFile(answer);
+  }
+  if (commandLine === 'cat') {
+    readFile(answer);
   }
   //compress/decompress
   if (commandLine === 'decompress') {

@@ -15,3 +15,4 @@ export { decompress } from './helpers/FS/decompress.js';
 export { addEmptyFile } from './helpers/FS/addEmptyFile.js';
 export { renameFile } from './helpers/FS/renameFile.js';
 export { deleteFile } from './helpers/FS/deleteFile.js';
+export { readFile } from './helpers/FS/readFile.js';
