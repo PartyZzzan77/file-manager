@@ -2,7 +2,7 @@ import fs from 'node:fs';
 import path from 'node:path';
 import { enterAnotherCommand } from '../enterAnotherCommand.js';
 import { printInvalidPath } from '../printInvalidPath.js';
-import { snowCurrentDir } from '../snowCurrentDir.js';
+import { printCurrentDir } from '../printCurrentDir.js';
 
 export const readFile = (answer) => {
   const command = answer.split(' ');
@@ -12,10 +12,10 @@ export const readFile = (answer) => {
   rs.on('error', () => {
     printInvalidPath();
     enterAnotherCommand();
-    snowCurrentDir(process.cwd());
+    printCurrentDir(process.cwd());
   });
 
-  rs.on('end', () => snowCurrentDir(process.cwd()));
+  rs.on('end', () => printCurrentDir(process.cwd()));
   rs.on('data', () => process.stdout.write('\n\n'));
 
   if (command.length !== 2) {

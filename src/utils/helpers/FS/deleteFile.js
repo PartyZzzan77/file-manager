@@ -2,7 +2,7 @@ import path from 'node:path';
 import { unlink } from 'node:fs/promises';
 import { enterAnotherCommand } from '../enterAnotherCommand.js';
 import { printInvalidPath } from '../printInvalidPath.js';
-import { snowCurrentDir } from '../snowCurrentDir.js';
+import { printCurrentDir } from '../printCurrentDir.js';
 
 export const deleteFile = async (answer) => {
   const command = answer.split(' ');
@@ -20,6 +20,6 @@ export const deleteFile = async (answer) => {
   } catch {
     printInvalidPath();
     enterAnotherCommand();
-    snowCurrentDir(process.cwd());
+    printCurrentDir(process.cwd());
   }
 };

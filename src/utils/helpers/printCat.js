@@ -1,6 +1,6 @@
 import fs from 'node:fs';
 import { enterAnotherCommand } from './enterAnotherCommand.js';
-import { snowCurrentDir } from './snowCurrentDir.js';
+import { printCurrentDir } from './printCurrentDir.js';
 
 export const printCat = (path) => {
   fs.readdir(path, { withFileTypes: true }, (err, files) => {
@@ -16,7 +16,7 @@ export const printCat = (path) => {
       process.stdout.write('\n');
       console.table(catalog);
 
-      snowCurrentDir(process.cwd());
+      printCurrentDir(process.cwd());
     }
   });
 };

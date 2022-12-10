@@ -4,7 +4,7 @@ import { unlink } from 'node:fs/promises';
 import { pipeline } from 'node:stream';
 import { enterAnotherCommand } from '../enterAnotherCommand.js';
 import { printInvalidPath } from '../printInvalidPath.js';
-import { snowCurrentDir } from '../snowCurrentDir.js';
+import { printCurrentDir } from '../printCurrentDir.js';
 
 export const moveFile = (answer) => {
   const command = answer.split(' ');
@@ -29,7 +29,7 @@ export const moveFile = (answer) => {
     if (err) {
       printInvalidPath();
       enterAnotherCommand();
-      snowCurrentDir(process.cwd());
+      printCurrentDir(process.cwd());
     }
   });
 };

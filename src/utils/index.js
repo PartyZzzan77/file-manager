@@ -1,5 +1,5 @@
 export { printCat } from './helpers/printCat.js';
-export { snowCurrentDir } from './helpers/snowCurrentDir.js';
+export { printCurrentDir } from './helpers/printCurrentDir.js';
 export { enterAnotherCommand } from './helpers/enterAnotherCommand.js';
 export { printInvalidPath } from './helpers/printInvalidPath.js';
 export { goUp } from './helpers/goUp.js';

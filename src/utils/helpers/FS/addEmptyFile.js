@@ -2,7 +2,7 @@ import fs from 'node:fs';
 import path from 'node:path';
 import { enterAnotherCommand } from '../enterAnotherCommand.js';
 import { printInvalidPath } from '../printInvalidPath.js';
-import { snowCurrentDir } from '../snowCurrentDir.js';
+import { printCurrentDir } from '../printCurrentDir.js';
 
 export const addEmptyFile = (answer) => {
   const command = answer.split(' ');
@@ -19,11 +19,11 @@ export const addEmptyFile = (answer) => {
   fs.appendFile(pathSrc, '', (err) => {
     console.clear();
     process.stdout.write(`\nSuccess`);
-    snowCurrentDir(process.cwd());
+    printCurrentDir(process.cwd());
 
     if (err) {
       process.stdout.write(`\nSomething went wrong\n`);
-      snowCurrentDir(process.cwd());
+      printCurrentDir(process.cwd());
     }
   });
 };

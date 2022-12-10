@@ -3,7 +3,7 @@ import { rename } from 'node:fs/promises';
 import { access } from 'node:fs/promises';
 import { enterAnotherCommand } from '../enterAnotherCommand.js';
 import { printInvalidPath } from '../printInvalidPath.js';
-import { snowCurrentDir } from '../snowCurrentDir.js';
+import { printCurrentDir } from '../printCurrentDir.js';
 
 export const renameFile = async (answer) => {
   const command = answer.split(' ');
@@ -22,6 +22,6 @@ export const renameFile = async (answer) => {
     await rename(pathSrc, pathDist);
   } catch (error) {
     printInvalidPath();
-    snowCurrentDir(process.cwd());
+    printCurrentDir(process.cwd());
   }
 };

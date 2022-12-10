@@ -17,7 +17,7 @@ import {
   printRootName,
   readFile,
   renameFile,
-  snowCurrentDir,
+  printCurrentDir,
 } from './utils/index.js';
 
 const isArgs = process.argv.slice(2).length > 0;
@@ -32,7 +32,7 @@ const rl = readline.createInterface({
 
 process.stdout.write(`Welcome to the File Manager, ${username}!\n\n`);
 
-snowCurrentDir(process.cwd());
+printCurrentDir(process.cwd());
 rl.on('line', (answer) => {
   const commandLine = answer.split(' ')[0];
   //navigation
@@ -114,7 +114,7 @@ rl.on('line', (answer) => {
     printArch();
   }
 
-  snowCurrentDir(process.cwd());
+  printCurrentDir(process.cwd());
 });
 
 rl.on('SIGINT', (answer) => {
