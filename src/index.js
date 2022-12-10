@@ -4,6 +4,7 @@ import {
   changeCatalog,
   compress,
   decompress,
+  deleteFile,
   goUp,
   printArch,
   printCat,
@@ -55,6 +56,9 @@ rl.on('line', (answer) => {
 
   if (commandLine === 'hash') {
     printHash(answer);
+  }
+  if (commandLine === 'rm') {
+    deleteFile(answer);
   }
   //compress/decompress
   if (commandLine === 'decompress') {
