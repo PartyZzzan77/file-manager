@@ -12,3 +12,4 @@ export { printRootName } from './helpers/OS/printRootName.js';
 export { printArch } from './helpers/OS/printArch.js';
 export { compress } from './helpers/FS/compress.js';
 export { decompress } from './helpers/FS/decompress.js';
+export { addEmptyFile } from './helpers/FS/addEmptyFile.js';

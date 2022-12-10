@@ -1,5 +1,6 @@
 import readline from 'node:readline';
 import {
+  addEmptyFile,
   changeCatalog,
   compress,
   decompress,
@@ -28,39 +29,43 @@ process.stdout.write(`Welcome to the File Manager, ${username}!\n\n`);
 
 snowCurrentDir(process.cwd());
 rl.on('line', (answer) => {
+  const commandLine = answer.split(' ')[0];
   //navigation
 
-  console.log(answer.split(' ')[0]);
   if (answer === 'up') {
     goUp();
   }
 
-  if (answer.includes('cd')) {
+  if (commandLine === 'cd') {
     changeCatalog(answer);
   }
 
-  if (answer === 'ls') {
+  if (commandLine === 'ls') {
+    console.log(answer.split(' ')[0]);
     printCat(process.cwd());
   }
   //FS
-  if (answer.includes('hash')) {
+  if (commandLine === 'add') {
+    addEmptyFile(answer);
+  }
+  if (commandLine === 'hash') {
     printHash(answer);
   }
   //compress/decompress
-  if (answer.split(' ')[0] === 'decompress') {
+  if (commandLine === 'decompress') {
     decompress(answer);
   }
 
-  if (answer.split(' ')[0] === 'compress') {
+  if (commandLine === 'compress') {
     compress(answer);
   }
 
   //exit/clear
-  if (answer === 'clear') {
+  if (commandLine === 'clear') {
     console.clear();
   }
 
-  if (answer === '.exit') {
+  if (commandLine === '.exit') {
     console.clear();
     return rl.close();
   }
