@@ -3,6 +3,7 @@ import {
   addEmptyFile,
   changeCatalog,
   compress,
+  copyFile,
   decompress,
   deleteFile,
   goUp,
@@ -44,7 +45,6 @@ rl.on('line', (answer) => {
   }
 
   if (commandLine === 'ls') {
-    console.log(answer.split(' ')[0]);
     printCat(process.cwd());
   }
   //FS
@@ -53,6 +53,10 @@ rl.on('line', (answer) => {
   }
   if (commandLine === 'rn') {
     renameFile(answer);
+  }
+
+  if (commandLine === 'cp') {
+    copyFile(answer);
   }
 
   if (commandLine === 'hash') {
