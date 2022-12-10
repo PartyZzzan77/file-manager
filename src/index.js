@@ -7,6 +7,7 @@ import {
   decompress,
   deleteFile,
   goUp,
+  moveFile,
   printArch,
   printCat,
   printCPUS,
@@ -57,6 +58,10 @@ rl.on('line', (answer) => {
 
   if (commandLine === 'cp') {
     copyFile(answer);
+  }
+
+  if (commandLine === 'mv') {
+    moveFile(answer);
   }
 
   if (commandLine === 'hash') {

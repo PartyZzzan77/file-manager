@@ -17,3 +17,4 @@ export { renameFile } from './helpers/FS/renameFile.js';
 export { deleteFile } from './helpers/FS/deleteFile.js';
 export { readFile } from './helpers/FS/readFile.js';
 export { copyFile } from './helpers/FS/copyFile.js';
+export { moveFile } from './helpers/FS/moveFile.js';
