@@ -5,6 +5,8 @@ export { printInvalidPath } from './helpers/printInvalidPath.js';
 export { goUp } from './helpers/goUp.js';
 export { changeCatalog } from './helpers/changeCatalog.js';
 export { printHash } from './helpers/printHash.js';
+export { clear } from './helpers/clear.js';
+export { exit } from './helpers/exit.js';
 export { printEOL } from './helpers/OS/printEOL.js';
 export { printCPUS } from './helpers/OS/printCPUS.js';
 export { printHomedir } from './helpers/OS/printHomedir.js';

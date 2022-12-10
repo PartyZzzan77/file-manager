@@ -1,25 +1,13 @@
 import readline from 'node:readline';
 import {
-  addEmptyFile,
-  changeCatalog,
-  compress,
-  copyFile,
-  decompress,
-  deleteFile,
-  goUp,
-  moveFile,
-  printArch,
-  printCat,
-  printCPUS,
-  printEOL,
-  printHash,
-  printHomedir,
-  printRootName,
-  readFile,
-  renameFile,
-  printCurrentDir,
-} from '../utils/index.js';
-
+  commandMap,
+  commandNeedCWD,
+  commandNeedLineInterface,
+  commandsDump,
+  commandsNeedAnswer,
+  commandsOS,
+} from '../utils/commands/commands.js';
+import { printCurrentDir } from '../utils/index.js';
 class App {
   constructor() {
     this._rl = readline.createInterface({
@@ -36,81 +24,26 @@ class App {
 
     this._rl.on('line', (answer) => {
       const commandLine = answer.split(' ')[0];
-      //navigation
-      if (answer === 'up') {
-        goUp();
+
+      if (commandsDump.includes(commandLine)) {
+        commandMap[commandLine]();
       }
 
-      if (commandLine === 'cd') {
-        changeCatalog(answer);
+      if (commandsOS.includes(answer)) {
+        commandMap[answer]();
       }
 
-      if (commandLine === 'ls') {
-        printCat(process.cwd());
-      }
-      //FS
-      if (commandLine === 'add') {
-        addEmptyFile(answer);
-      }
-      if (commandLine === 'rn') {
-        renameFile(answer);
+      if (commandNeedCWD.includes(commandLine)) {
+        commandMap[commandLine](process.cwd());
       }
 
-      if (commandLine === 'cp') {
-        copyFile(answer);
+      if (commandNeedLineInterface.includes(commandLine)) {
+        return commandMap[commandLine](this._rl);
+        
       }
 
-      if (commandLine === 'mv') {
-        moveFile(answer);
-      }
-
-      if (commandLine === 'hash') {
-        printHash(answer);
-      }
-
-      if (commandLine === 'rm') {
-        deleteFile(answer);
-      }
-      if (commandLine === 'cat') {
-        readFile(answer);
-      }
-      //compress/decompress
-      if (commandLine === 'decompress') {
-        decompress(answer);
-      }
-
-      if (commandLine === 'compress') {
-        compress(answer);
-      }
-
-      //exit/clear
-      if (commandLine === 'clear') {
-        console.clear();
-      }
-
-      if (commandLine === '.exit') {
-        console.clear();
-        return rl.close();
-      }
-      //OS
-      if (answer === 'os --EOL') {
-        printEOL();
-      }
-
-      if (answer === 'os --cpus') {
-        printCPUS();
-      }
-
-      if (answer === 'os --homedir') {
-        printHomedir();
-      }
-
-      if (answer === 'os --username') {
-        printRootName();
-      }
-
-      if (answer === 'os --architecture') {
-        printArch();
+      if (commandsNeedAnswer.includes(commandLine)) {
+        commandMap[commandLine](answer);
       }
 
       printCurrentDir(process.cwd());
